@@ -28,7 +28,6 @@ module.exports = function(grunt) {
       dev: [
         'shell:sass',
         'shell:babel',
-        'shell:copy-dist',
         'shell:karma-server'
       ],
       // Run multiple watch tasks in parallel
@@ -202,7 +201,7 @@ module.exports = function(grunt) {
   });
 
   // Run while developing
-  grunt.registerTask('dev', ['sandbox', 'concurrent:dev']);
+  grunt.registerTask('dev', ['sandbox', 'shell:clean', 'concurrent:dev']);
   grunt.registerTask('watchAll', ['build', 'concurrent:watchAll']);
 
   // Pick your testing, or run both in different terminals
